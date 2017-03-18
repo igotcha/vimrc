@@ -38,3 +38,6 @@ augroup PythonHeader
     autocmd BufNewFile *.py call s:PythonHeader()
 augroup END
 " }}}
+
+" 离开插入模式后自动关闭预览窗口
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
