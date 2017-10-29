@@ -66,6 +66,10 @@ au FileType go nmap <Leader>d <Plug>(go-doc)
 au FileType go set completeopt+=preview
 " }}}
 
+" Python {{{
+call dein#add("davidhalter/jedi-vim")
+" }}}
+
 " Neomake {{{
 call dein#add('neomake/neomake')
 
@@ -429,7 +433,7 @@ inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+" autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " Enable heavy omni completion.
