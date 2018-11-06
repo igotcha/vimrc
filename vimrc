@@ -35,3 +35,4 @@ map <F1> :NERDTreeToggle<CR>
 
 "set ttyfast
 "set lazyredraw
+set conceallevel=0
