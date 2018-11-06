@@ -57,7 +57,7 @@ let g:go_fmt_fail_silently   = 1
 let g:go_autodetect_gopath   = 1
 let g:go_def_mapping_enabled = 0
 
-nnoremap gd :GoDef<CR>
+au Filetype go nnoremap gd :GoDef<CR>
 
 au FileType go nmap <Leader>s <Plug>(go-def-split)
 au FileType go nmap <Leader>v <Plug>(go-def-vertical)
@@ -66,12 +66,41 @@ au FileType go nmap <Leader>d <Plug>(go-doc)
 au FileType go set completeopt+=preview
 " }}}
 
+" Python {{{
+call dein#add("davidhalter/jedi-vim")
+" }}}
+
+" ALE {{{
+call dein#add('w0rp/ale')
+
+let b:ale_linters = {'javascript': ['eslint']}
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 1
+" }}}
+
+" Javascript {{{
+call dein#add('pangloss/vim-javascript')
+" let g:javascript_plugin_jsdoc = 1
+" let g:javascript_plugin_ngdoc = 1
+let g:javascript_plugin_flow = 1
+
+call dein#add('mxw/vim-jsx')
+let g:jsx_ext_required = 0
+
+call dein#add('mattn/emmet-vim')
+
+au FileType javascript set shiftwidth=2
+au FileType javascript set softtabstop=2
+" }}}
+
+
 " Neomake {{{
 call dein#add('neomake/neomake')
 
 autocmd! BufWritePost * Neomake
 
 let g:neomake_serialize = 1
+
 let g:neomake_serialize_abort_on_error = 1
 " }}}
 
@@ -428,8 +457,8 @@ inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+" autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+" autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " Enable heavy omni completion.
