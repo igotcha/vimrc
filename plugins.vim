@@ -13,7 +13,9 @@ let g:nerdtree_tabs_open_on_gui_startup = '1'
 " }}}
 
 " colorscheme {{{
+call dein#add('miconda/lucariox.vim')
 call dein#add('tomasr/molokai')
+call dein#add('kadekillary/subtle_solo')
 
 let g:rehash256 = 1
 
@@ -21,9 +23,13 @@ call dein#add('altercation/vim-colors-solarized')
 
 let g:solarized_termcolors = 256
 let g:solarized_termtrans  = 1
-let g:solarized_contrast   = "normal"
+let g:solarized_contrast   = "low"
 let g:solarized_visibility = "low"
+let g:solarized_bold = 1
+let g:solarized_underline = 1
+let g:solarized_italic = 1
 " }}}
+
 
 " Airline - lean & mean status/tabline for vim that's light as air {{{
 call dein#add('vim-airline/vim-airline')
@@ -64,6 +70,13 @@ au FileType go nmap <Leader>v <Plug>(go-def-vertical)
 au FileType go nmap <Leader>ii <Plug>(go-implements)
 au FileType go nmap <Leader>d <Plug>(go-doc)
 au FileType go set completeopt+=preview
+
+autocmd BufRead,BufNewFile ~/.cache/go-build/* set syntax=go
+" }}}
+
+" Python {{{
+call dein#add("davidhalter/jedi-vim")
+call dein#add("tell-k/vim-autopep8")
 " }}}
 
 " Python {{{
@@ -389,6 +402,8 @@ smap <expr><TAB> neosnippet#jumpable() ?
             \ "\<Plug>(neosnippet_jump)"
             \: "\<TAB>"
 
+let g:neosnippet#snippets_directory='~/.vim/snippets'
+
 " For snippet_complete marker.
 if has('conceal')
     set conceallevel=2 concealcursor=i
@@ -438,7 +453,7 @@ function! s:my_cr_function()
   "return pumvisible() ? "\<C-y>" : "\<CR>"
 endfunction
 " <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
 inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
