@@ -1,5 +1,5 @@
 " Reverse visual mode color
-hi Visual term=reverse cterm=reverse guibg=Grey
+" hi Visual term=reverse cterm=reverse guibg=Grey
 set background=dark
 
 " coloscheme
@@ -8,3 +8,4 @@ if has('gui_running')
 end
 
 silent! colorscheme solarized
+" silent! colorscheme subtle_light
